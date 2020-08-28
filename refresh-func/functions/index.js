@@ -6,7 +6,7 @@ const app = express();
 const FBAuth = require('./util/fbAuth');
 
 const{ getAllScreams, postOneScream } = require('./handlers/screams');
-const {signup, login} = require('./handlers/users');
+const {signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = require('./handlers/users');
 
 // const config = {
 // 	apiKey: "AIzaSyBd-9DQCHgplknl1XuQCNp5rFadtpsHUpk",
@@ -28,6 +28,9 @@ app.post('/scream', FBAuth , postOneScream);
 //users routes
 app.post('/signup', signup);
 app.post('/login', login);
+app.post('/user/image', FBAuth, uploadImage);
+app.post('/user', FBAuth, addUserDetails);
+app.get('/user', FBAuth, getAuthenticatedUser);
 
 
 exports.api = functions.https.onRequest(app);

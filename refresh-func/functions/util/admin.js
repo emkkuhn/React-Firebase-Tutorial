@@ -3,7 +3,8 @@ var serviceAccount = require("/Users/User/Desktop/refresh-24c1c-firebase-adminsd
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://refresh-24c1c.firebaseio.com"
+  databaseURL: "https://refresh-24c1c.firebaseio.com",
+  storageBucket: "refresh-24c1c.appspot.com"
 });
 
 const db = admin.firestore();
