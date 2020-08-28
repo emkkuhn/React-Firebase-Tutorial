@@ -11,7 +11,8 @@ db.collection('screams').orderBy('createdAt', 'desc').get()
 					userHandle: doc.data().userHandle,
 					createdAt: doc.data().createdAt,
 					commentCount: doc.data().commentCount,
-					likeCount: doc.data().likeCount
+					likeCount: doc.data().likeCount,
+					userImage: doc.data().userImage
 				});
 			});
 			return res.json(screams);
