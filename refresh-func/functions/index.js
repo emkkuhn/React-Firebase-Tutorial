@@ -6,7 +6,7 @@ const FBAuth = require('./util/fbAuth');
 const { db } = require('./util/admin');
 
 const{ getAllScreams, postOneScream, getScream, commentOnScream, likeScream, unlikeScream, deleteScream } = require('./handlers/screams');
-const {signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = require('./handlers/users');
+const {signup, login, uploadImage, addUserDetails, getAuthenticatedUser, getUserDetails, markNotificationRead } = require('./handlers/users');
 
 // const config = {
 // 	apiKey: "AIzaSyBd-9DQCHgplknl1XuQCNp5rFadtpsHUpk",
@@ -36,6 +36,8 @@ app.post('/login', login);
 app.post('/user/image', FBAuth, uploadImage);
 app.post('/user', FBAuth, addUserDetails);
 app.get('/user', FBAuth, getAuthenticatedUser);
+app.get('/user/:handle', getUserDetails);
+app.post('/notifications', FBAuth, markNotificationsRead);
 
 
 exports.api = functions.https.onRequest(app);
